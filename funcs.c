@@ -130,24 +130,56 @@ void find_Vout(void){
     double Vin;
     double R1;
     double R2;
-    printf("\n Enter value for Vin");
-    if (fgets(buf, sizeof buf, stdin)) {
-        Vin  = strtod(buf, NULL);
-        printf("Vin = %f\n", Vin);
+    printf("\n Enter value for Vin\n");
+    if (fgets(buf, sizeof buf, stdin)) {  //if user enter a number fgets stores the number into buf as long as the characters are not more than 99
+        Vin  = strtod(buf, NULL); // here the string buf is converted int9 decimal and stored into the variable Vin
+        printf("Vin = %f\n", Vin); // here the value of Vin is printed 
     }
-    printf("\n Enter value for R1");
+    // same method used as the previous if statement
+    printf("\n Enter value for R1\n"); 
      if (fgets(buf, sizeof buf, stdin)) {
         R1 = strtod(buf, NULL);
         printf("R1 = %f\n", R1);
     }
-    printf("\n Enter value for R2"); 
+     // same method used as the previous if statement
+    printf("\n Enter value for R2\n"); 
     if (fgets(buf, sizeof buf, stdin)) {
         R2  = strtod(buf, NULL);
         printf("R2 = %f\n", R2);
     }
 
-    double Vout = Vin * (R2/R2+R1);
+    double Vout = Vin * R2/(R2+R1);// here a variable is created (Vout) to store the value of the calculation of the values that where input previously
 
-    printf("\n Vout= %f\n",Vout);
+    printf("\n Vout= %f\n",Vout); //Prints value of Vout
 }
 
+
+
+void find_Vin(void){
+    char buf[100];
+   
+    double Vout;
+    double R1;
+    double R2;
+    printf("\n Enter value for Vout\n");
+    if (fgets(buf, sizeof buf, stdin)) {  //if user enter a number fgets stores the number into buf as long as the characters are not more than 99
+        Vout = strtod(buf, NULL); // here the string buf is converted int9 decimal and stored into the variable Vin
+        printf("Vin = %f\n", Vout); // here the value of Vin is printed 
+    }
+    // same method used as the previous if statement
+    printf("\n Enter value for R1\n"); 
+     if (fgets(buf, sizeof buf, stdin)) {
+        R1 = strtod(buf, NULL);
+        printf("R1 = %f\n", R1);
+    }
+     // same method used as the previous if statement
+    printf("\n Enter value for R2\n"); 
+    if (fgets(buf, sizeof buf, stdin)) {
+        R2  = strtod(buf, NULL);
+        printf("R2 = %f\n", R2);
+    }
+
+    double Vin = Vout * (R2+R1)/R2;// here a variable is created (Vout) to store the value of the calculation of the values that where input previously
+
+    printf("\n Vin= %f\n",Vin); //Prints value of Vin
+}

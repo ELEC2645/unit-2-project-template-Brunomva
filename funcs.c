@@ -11,10 +11,18 @@ void main_menu(void) {
     select_menu_item(input);
 }
 
+void clear_input_buffer(void) {
+    int ch;
+    while ((ch = getchar()) != '\n' && ch != EOF) { //used to flush after scanf
+        // discard everything up to and including the newline 
+    }
+}
+
 int get_user_input(void) {
     int input;
     printf("\nSelect item: ");
     scanf("%d", &input);  // assume valid input for this activity
+     clear_input_buffer();
     return input;
 }
 
@@ -62,6 +70,7 @@ void menu_item_1(void) {
      print_menu_item_11();
     int input = get_user_input();
      select_variable_PotentialDivider(input);
+     
 
     go_back_to_main();
 }
@@ -135,11 +144,10 @@ void find_Vout(void){
     double R1;
     double R2;
     printf("\n Enter value for Vin\n");
-   /*if (fgets(buf, sizeof buf, stdin)) {  //if user enter a number fgets stores the number into buf as long as the characters are not more than 99
+   if (fgets(buf, sizeof buf, stdin)) {  //if user enter a number fgets stores the number into buf as long as the characters are not more than 99
         Vin  = strtod(buf, NULL); // here the string buf is converted int9 decimal and stored into the variable Vin
         printf("Vin = %f\n", Vin); // here the value of Vin is printed 
-    }*/
-   scanf("%lf",&Vin);
+    }
     // same method used as the previous if statement
     printf("\n Enter value for R1\n"); 
      if (fgets(buf, sizeof buf, stdin)) {

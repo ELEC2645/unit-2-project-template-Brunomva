@@ -7,6 +7,8 @@ void select_menu_item(int input);
 void print_main_menu(void);
 void go_back_to_main(void);
 
+void clear_input_buffer(void);
+
 
 void menu_item_1(void); 
 void menu_item_2(void); 

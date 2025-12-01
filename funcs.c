@@ -3,7 +3,7 @@
 #include "funcs.h"
 
 
-/*
+
 
 void main_menu(void) {
     print_main_menu();
@@ -35,9 +35,9 @@ void select_menu_item(int input) {
 
 void print_main_menu(void) {
     printf("\n----------- Main menu -----------\n");
-    printf("|\t1. Addition\t|\n");
+    printf("|\t1. Potential Divider\t|\n");
     printf("|\t2. Subtraction\t|\n");
-    printf("|\t3. Multiplication\n");
+    printf("|\t3. Multiplication\t|\n");
     printf("|\t4. Division\t\t|\n");
     printf("|\t5. Exit\t\t\t|\n");
     printf("---------------------------------\n");
@@ -60,6 +60,9 @@ void go_back_to_main(void) {
 
 void menu_item_1(void) {
      print_menu_item_11();
+    int input = get_user_input();
+     select_variable_PotentialDivider(input);
+
     go_back_to_main();
 }
 
@@ -111,16 +114,17 @@ void menu_item_4(void) {
 
 void print_menu_item_11(void){
     printf("\n----------- Potential divider -----------\n");
-    printf("|\t1. Vin\t|\n");
-    printf("|\t2. Vout\t|\n");
-    printf("|\t3. R1\n");
-    printf("|\t4. R2\t\t|\n");
+    printf("\n##### PRESS #####\n");
+    printf("|\t1. to calculte Vout\t|\n");
+    printf("|\t2. to calculte Vin\t|\n");
+    printf("|\t3. to calculte R2\t\n");
+    printf("|\t4. to calculte R1\t\t|\n");
     printf("|\t5. Exit\t\t\t|\n");
     printf("---------------------------------\n");
 
 
 }
-*/
+
 
 //inside menu 1 potential divider
 // When Vout is the subject
@@ -131,10 +135,11 @@ void find_Vout(void){
     double R1;
     double R2;
     printf("\n Enter value for Vin\n");
-    if (fgets(buf, sizeof buf, stdin)) {  //if user enter a number fgets stores the number into buf as long as the characters are not more than 99
+   /*if (fgets(buf, sizeof buf, stdin)) {  //if user enter a number fgets stores the number into buf as long as the characters are not more than 99
         Vin  = strtod(buf, NULL); // here the string buf is converted int9 decimal and stored into the variable Vin
         printf("Vin = %f\n", Vin); // here the value of Vin is printed 
-    }
+    }*/
+   scanf("%lf",&Vin);
     // same method used as the previous if statement
     printf("\n Enter value for R1\n"); 
      if (fgets(buf, sizeof buf, stdin)) {
@@ -164,7 +169,7 @@ void find_Vin(void){
     printf("\n Enter value for Vout\n");
     if (fgets(buf, sizeof buf, stdin)) {  //if user enter a number fgets stores the number into buf as long as the characters are not more than 99
         Vout = strtod(buf, NULL); // here the string buf is converted int9 decimal and stored into the variable Vin
-        printf("Vin = %f\n", Vout); // here the value of Vin is printed 
+        printf("Vin = %f\n", Vout); // here the value is printed 
     }
     // same method used as the previous if statement
     printf("\n Enter value for R1\n"); 
@@ -179,7 +184,90 @@ void find_Vin(void){
         printf("R2 = %f\n", R2);
     }
 
-    double Vin = Vout * (R2+R1)/R2;// here a variable is created (Vout) to store the value of the calculation of the values that where input previously
+    double Vin = Vout * (R2+R1)/R2;// here a variable is created  to store the value of the calculation of the values that where input previously
 
-    printf("\n Vin= %f\n",Vin); //Prints value of Vin
+    printf("\n Vin= %f\n",Vin); //Prints value 
 }
+
+
+void find_R2(void){
+    char buf[100];
+   
+    double Vout;
+    double R1;
+    double Vin;
+    printf("\n Enter value for Vout\n");
+    if (fgets(buf, sizeof buf, stdin)) {  //if user enter a number fgets stores the number into buf as long as the characters are not more than 99
+        Vout = strtod(buf, NULL); // here the string buf is converted int9 decimal and stored into the variable Vin
+        printf("Vin = %f\n", Vout); // here the value  is printed 
+    }
+    // same method used as the previous if statement
+    printf("\n Enter value for R1\n"); 
+     if (fgets(buf, sizeof buf, stdin)) {
+        R1 = strtod(buf, NULL);
+        printf("R1 = %f\n", R1);
+    }
+     // same method used as the previous if statement
+    printf("\n Enter value for Vin\n"); 
+    if (fgets(buf, sizeof buf, stdin)) {
+        Vin  = strtod(buf, NULL);
+        printf("R2 = %f\n", Vin);
+    }
+
+    double R2 = (Vout*R1)/(Vin-Vout);// here a variable is created  to store the value of the calculation of the values that where input previously
+
+    printf("\n R2= %f\n",R2); //Prints value
+}
+
+
+
+
+
+
+void find_R1(void){
+    char buf[100];
+   
+    double Vout;
+    double Vin;
+    double R2;
+    printf("\n Enter value for Vout\n");
+    if (fgets(buf, sizeof buf, stdin)) {  //if user enter a number fgets stores the number into buf as long as the characters are not more than 99
+        Vout = strtod(buf, NULL); // here the string buf is converted int0 decimal and stored into the variable Vin
+        printf("Vin = %f\n", Vout); // here the value of Vin is printed 
+    }
+    // same method used as the previous if statement
+    printf("\n Enter value for Vin\n"); 
+     if (fgets(buf, sizeof buf, stdin)) {
+        Vin = strtod(buf, NULL);
+        printf("R1 = %f\n", Vin);
+    }
+     // same method used as the previous if statement
+    printf("\n Enter value for R2\n"); 
+    if (fgets(buf, sizeof buf, stdin)) {
+        R2  = strtod(buf, NULL);
+        printf("R2 = %f\n", R2);
+    }
+
+    double R1 = ((Vin*R2) -(Vout*R2) )/Vout;// here a variable is created  to store the value of the calculation of the values that where input previously
+
+    printf("\n R1= %f\n",R1); //Prints value 
+}
+
+
+void select_variable_PotentialDivider(int input) {
+    switch (input) {
+        case 1:find_Vout(); break;
+        case 2:find_Vin (); break;
+        case 3: find_R2(); break;
+        case 4:find_R1 (); break;
+
+
+        case 5: printf("Exiting program...\n"); exit(0);
+        default: printf("Invalid selection. Exiting...\n"); exit(1);
+    }
+}
+
+
+
+
+

@@ -15,8 +15,13 @@ void menu_item_4(void);
 void menu_item_5(void);
 
 
-//pontential divider functiond for the equations
+//pontential divider functions
 void find_Vout(void);
 void find_Vin(void);
+void find_R2(void);
+void find_R1(void);
+
+void select_variable_PotentialDivider(int input);
+ 
 
 #endif

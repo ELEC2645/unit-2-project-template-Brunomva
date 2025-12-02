@@ -25,5 +25,11 @@ void find_R1(void);
 
 void select_variable_PotentialDivider(int input);
  
+//Ohms law functions
+void find_V(void);
+void find_I(void);
+void find_R(void);
+
+void select_variable_OhmsLaw(int input);
 
 #endif

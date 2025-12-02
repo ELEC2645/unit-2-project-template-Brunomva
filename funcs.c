@@ -76,15 +76,9 @@ void menu_item_1(void) {
 }
 
 void menu_item_2(void) {
-    printf("\n>> Menu 2: Subtraction\n");
-     printf("Enter a number\n");
-    int num1;
-    scanf("%d", &num1);
-    printf("Enter a number\n");
-    int num2;
-    scanf("%d",&num2);
-     int result = num1 - num2;
-    printf("Result: %d\n", result);
+    print_menu_item_11();
+    int input = get_user_input();
+    select_variable_OhmsLaw( input);
 
   
     go_back_to_main();
@@ -128,6 +122,18 @@ void print_menu_item_11(void){
     printf("|\t2. to calculte Vin\t|\n");
     printf("|\t3. to calculte R2\t\n");
     printf("|\t4. to calculte R1\t\t|\n");
+    printf("|\t5. Exit\t\t\t|\n");
+    printf("---------------------------------\n");
+
+
+}
+
+void print_menu_item_22(void){
+    printf("\n----------- Ohms law -----------\n");
+    printf("\n##### PRESS #####\n");
+    printf("|\t1. to calculte V\t|\n");
+    printf("|\t2. to calculte R\t|\n");
+    printf("|\t3. to calculte I\t\n");
     printf("|\t5. Exit\t\t\t|\n");
     printf("---------------------------------\n");
 
@@ -277,5 +283,93 @@ void select_variable_PotentialDivider(int input) {
 
 
 
+//--------Ohms law in menu
+void find_V(void){
+    char buf[100];
+   
+
+    double I;
+    double R;
+    printf("\n Enter value for I\n");
+   if (fgets(buf, sizeof buf, stdin)) {  //if user enter a number fgets stores the number into buf as long as the characters are not more than 99
+        I  = strtod(buf, NULL); // here the string buf is converted int9 decimal and stored into the variable Vin
+        printf("Vin = %f\n", I); // here the value of Vin is printed 
+    }
+    // same method used as the previous if statement
+    printf("\n Enter value for R\n"); 
+     if (fgets(buf, sizeof buf, stdin)) {
+        R = strtod(buf, NULL);
+        printf("R1 = %f\n", R);
+    }
+    
+
+    double V = I * R;// here a variable is created to store the value of the calculation of the values that where input previously
+
+    printf("\n Vout= %f\n",V); //Prints value of V
+}
 
 
+
+
+void find_I(void){
+    char buf[100];
+   
+
+    double V ;
+    double R;
+    printf("\n Enter value for V\n");
+   if (fgets(buf, sizeof buf, stdin)) {  //if user enter a number fgets stores the number into buf as long as the characters are not more than 99
+        V  = strtod(buf, NULL); // here the string buf is converted int9 decimal and stored into the variable Vin
+        printf("Vin = %f\n", V); // here the value of Vin is printed 
+    }
+    // same method used as the previous if statement
+    printf("\n Enter value for R\n"); 
+     if (fgets(buf, sizeof buf, stdin)) {
+        R = strtod(buf, NULL);
+        printf("R = %f\n", R);
+    }
+    
+
+    double I= V/R;// here a variable is created to store the value of the calculation of the values that where input previously
+
+    printf("\n I= %f\n",I); //Prints value 
+}
+
+void find_R(void){
+    char buf[100];
+   
+
+    double V ;
+    double I;
+    printf("\n Enter value for V\n");
+   if (fgets(buf, sizeof buf, stdin)) {  //if user enter a number fgets stores the number into buf as long as the characters are not more than 99
+        V  = strtod(buf, NULL); // here the string buf is converted int9 decimal and stored into the variable Vin
+        printf("Vin = %f\n", V); // here the value of Vin is printed 
+    }
+    // same method used as the previous if statement
+    printf("\n Enter value for I\n"); 
+     if (fgets(buf, sizeof buf, stdin)) {
+        I = strtod(buf, NULL);
+        printf("R = %f\n", I);
+    }
+    
+
+    double R= V/I;// here a variable is created to store the value of the calculation of the values that where input previously
+
+    printf("\n I= %f\n",R); //Prints value 
+}
+
+
+
+void select_variable_OhmsLaw(int input) {
+    switch (input) {
+        case 1:find_V(); break;
+        case 2:find_I (); break;
+        case 3: find_R(); break;
+        
+
+
+        case 4: printf("Exiting program...\n"); exit(0);
+        default: printf("Invalid selection. Exiting...\n"); exit(1);
+    }
+}

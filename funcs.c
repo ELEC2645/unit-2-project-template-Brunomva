@@ -45,7 +45,7 @@ void print_main_menu(void) {
     printf("\n----------- Main menu -----------\n");
     printf("|\t1. Potential Divider\t|\n");
     printf("|\t2. Ohms Law\t|\n");
-    printf("|\t3. Multiplication\t|\n");
+    printf("|\t3. Power equations\t|\n");
     printf("|\t4. Division\t\t|\n");
     printf("|\t5. Exit\t\t\t|\n");
     printf("---------------------------------\n");
@@ -88,15 +88,10 @@ void menu_item_2(void) {
 
 
 void menu_item_3(void) {
-     printf("\n>> Menu 2: Multiplication\n");
-     printf("Enter a number\n");
-    int num1;
-    scanf("%d", &num1);
-    printf("Enter a number\n");
-    int num2;
-    scanf("%d",&num2);
-     int result = num1 * num2;
-    printf("Result: %d\n", result);
+     print_menu_item_33();
+     int input = get_user_input();
+     select_equations_Power( input);
+
     go_back_to_main();
    
 }
@@ -141,6 +136,20 @@ void print_menu_item_22(void){
 
 
 }
+
+void print_menu_item_33(void){
+    printf("\n-----------Power equations -----------\n");
+    printf("\n##### PRESS #####\n");
+    printf("|\t1. to use P, V, I\t|\n");
+    printf("|\t2. to use P, I, R\t|\n");
+    printf("|\t3. to use P, V, R\t\n");
+    printf("|\t4. Exit\t\t\t|\n");
+    printf("---------------------------------\n");
+
+
+}
+
+
 
 
 //inside menu 1 potential divider
@@ -376,8 +385,56 @@ void select_variable_OhmsLaw(int input) {
     }
 }
 
+//power 
+void select_equations_Power(int input) {
+    switch (input) {
+        case 1:PVI(); break;
+        case 2:PIR(); break;
+        case 3:PVR(); break;
+        
 
-//inside Power equation for PVI
+
+        case 4: printf("Exiting program...\n"); exit(0);
+        default: printf("Invalid selection. Exiting...\n"); exit(1);
+    }
+}
+
+void PVI(void){// funtion that allows choosing the the variable that we want to calculate for the formula tha include PVI
+printf("\nPress 1 to find P\n");
+printf("\nPress 2 to find I\n");
+printf("\nPress 3 to find V\n");
+int input = get_user_input();
+
+    switch (input)
+    {
+    case 1:find_P_PVI();break;
+    case 2:find_I_PVI();break;
+    case 3:find_V_PVI();break;
+    case 4: printf("Exiting program...\n"); exit(0);
+
+     default: printf("Invalid selection. Exiting...\n"); exit(1);
+        
+    
+    
+   
+    }
+   
+}
+
+void PIR(){
+    find_P_PIR();
+    find_I_PIR();
+    find_R_PIR();
+}
+
+void PVR(){
+    find_P_PVR();
+    find_V_PVR();
+    find_R_PVR();
+}
+
+
+//inside Power equation for PVI-----------------------------------------------------------
 
 
 void find_P_PVI(void){
@@ -401,7 +458,7 @@ void find_P_PVI(void){
 
     double P= V*I;// here a variable is created to store the value of the calculation of the values that where input previously
 
-    printf("\n I= %f\n",I); //Prints value 
+    printf("\n P= %f\n",P); //Prints value 
 }
 
 void find_I_PVI(void){
@@ -453,7 +510,7 @@ void find_V_PVI(void){
 }
 
 
-//POWER FOR PIR
+//POWER FOR PIR----------------------------------------------------------------------------------------------
 
 void find_P_PIR(void){
     char buf[100];
@@ -504,30 +561,103 @@ void find_R_PIR(void){
     printf("\n R= %f\n",R); //Prints value 
 }
 
-void find_P_PIR(void){
+
+
+void find_I_PIR(void){
     char buf[100];
    
 
     double R;
-    double I;
+    double P;
     printf("\n Enter value for R\n");
    if (fgets(buf, sizeof buf, stdin)) {  //if user enter a number fgets stores the number into buf as long as the characters are not more than 99
         R = strtod(buf, NULL); // here the string buf is converted int9 decimal and stored into the variable Vin
         printf("R= %f\n", R); // here the value of Vin is printed 
     }
     // same method used as the previous if statement
-    printf("\n Enter value for I\n"); 
+    printf("\n Enter value for P\n"); 
      if (fgets(buf, sizeof buf, stdin)) {
-        I = strtod(buf, NULL);
-        printf("I = %f\n", I);
+        P = strtod(buf, NULL);
+        printf("I = %f\n", P);
     }
     
    
-    double P= R*pow(2,I);// here a variable is created to store the value of the calculation of the values that where input previously
+    double I = sqrt(P / R);// here a variable is created to store the value of the calculation of the values that where input previously
 
-    printf("\n P= %f\n",P); //Prints value 
+    printf("\n I= %f\n",I); //Prints value 
 }
 
+//Power using PVR---------------------------------------
+
+void find_P_PVR(void){
+    char buf[100];
+   
+
+    double R;
+    double V;
+    printf("\n Enter value for R\n");
+   if (fgets(buf, sizeof buf, stdin)) {  //if user enter a number fgets stores the number into buf as long as the characters are not more than 99
+        R = strtod(buf, NULL); // here the string buf is converted int9 decimal and stored into the variable Vin
+        printf("R= %f\n", R); // here the value of Vin is printed 
+    }
+    // same method used as the previous if statement
+    printf("\n Enter value for V\n"); 
+     if (fgets(buf, sizeof buf, stdin)) {
+        V= strtod(buf, NULL);
+        printf("V = %f\n", V);
+    }
+
+    double P = pow(2,V)/R ;
+
+     printf("\n P = %f\n",P); //Prints value 
+}
+//----------------------
+void find_V_PVR(void){
+    char buf[100];
+   
+
+    double R;
+    double P;
+    printf("\n Enter value for R\n");
+   if (fgets(buf, sizeof buf, stdin)) {  //if user enter a number fgets stores the number into buf as long as the characters are not more than 99
+        R = strtod(buf, NULL); // here the string buf is converted int9 decimal and stored into the variable Vin
+        printf("R= %f\n", R); // here the value of Vin is printed 
+    }
+    // same method used as the previous if statement
+    printf("\n Enter value for P\n"); 
+     if (fgets(buf, sizeof buf, stdin)) {
+        P= strtod(buf, NULL);
+        printf("V = %f\n", P);
+    }
+
+    double V =sqrt(P*R) ;
+
+     printf("\n V = %f\n",V); //Prints value 
+}
+
+//--------------
+void find_R_PVR(void){
+    char buf[100];
+   
+
+    double P;
+    double V;
+    printf("\n Enter value for P\n");
+   if (fgets(buf, sizeof buf, stdin)) {  //if user enter a number fgets stores the number into buf as long as the characters are not more than 99
+        P = strtod(buf, NULL); // here the string buf is converted int9 decimal and stored into the variable Vin
+        printf("R= %f\n", P); // here the value of Vin is printed 
+    }
+    // same method used as the previous if statement
+    printf("\n Enter value for V\n"); 
+     if (fgets(buf, sizeof buf, stdin)) {
+        V= strtod(buf, NULL);
+        printf("V = %f\n", V);
+    }
+
+    double R = pow(2,V)/P ;
+
+     printf("\n R = %f\n",R); //Prints value 
+}
 
 
 

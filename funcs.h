@@ -32,4 +32,8 @@ void find_R(void);
 
 void select_variable_OhmsLaw(int input);
 
+//Power
+
+void PVI(void);
+
 #endif

@@ -91,7 +91,7 @@ void menu_item_2(void) {
 void menu_item_3(void) {
      print_menu_item_33();
      int input = get_user_input();
-     select_equations_Power( input);
+     select_equations_Power(input);
 
     go_back_to_main();
    
@@ -100,7 +100,7 @@ void menu_item_3(void) {
 
 void menu_item_4(void) {
      print_menu_item_44();
-     int input = get_user_input;
+     int input = get_user_input();
      select_variable_capacitance(input);
     go_back_to_main();
 }
@@ -461,8 +461,8 @@ int input = get_user_input();
     switch (input)
     {
     case 1:find_P_PVR();break;
-    case 2:find_V_PVI();break;
-    case 3:find_R_PVI();break;
+    case 2:find_V_PVR();break;
+    case 3:find_R_PVR();break;
     case 4: printf("Exiting program...\n"); exit(0);
 
      default: printf("Invalid selection. Exiting...\n"); exit(1);

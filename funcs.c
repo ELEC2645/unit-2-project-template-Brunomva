@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h> 
+#include <math.h>
 #include "funcs.h"
 
 
@@ -46,7 +47,7 @@ void print_main_menu(void) {
     printf("|\t1. Potential Divider\t|\n");
     printf("|\t2. Ohms Law\t|\n");
     printf("|\t3. Power equations\t|\n");
-    printf("|\t4. Division\t\t|\n");
+    printf("|\t4. Capacitance\t\t|\n");
     printf("|\t5. Exit\t\t\t|\n");
     printf("---------------------------------\n");
 }
@@ -98,15 +99,9 @@ void menu_item_3(void) {
 
 
 void menu_item_4(void) {
-    printf("\n>> Menu 2: Division\n");
-     printf("Enter a number\n");
-    int num1;
-    scanf("%d", &num1);
-    printf("Enter a number\n");
-    int num2;
-    scanf("%d",&num2);
-     int result = num1/num2;
-    printf("Result: %d\n", result);
+     print_menu_item_44();
+     int input = get_user_input;
+     select_variable_capacitance(input);
     go_back_to_main();
 }
 
@@ -148,6 +143,22 @@ void print_menu_item_33(void){
 
 
 }
+
+void print_menu_item_44(void){
+    printf("\n----------- Capacitance -----------\n");
+    printf("\n##### PRESS #####\n");
+    printf("|\t1. to calculte C\t|\n");
+    printf("|\t2. to calculte Q\t|\n");
+    printf("|\t3. to calculte V\t\n");
+    printf("|\t4. Exit\t\t\t|\n");
+    printf("---------------------------------\n");
+
+
+}
+
+
+
+
 
 
 
@@ -421,18 +432,45 @@ int input = get_user_input();
    
 }
 
-void PIR(){
-    find_P_PIR();
-    find_I_PIR();
-    find_R_PIR();
+void PIR(void){
+printf("\nPress 1 to find P\n");
+printf("\nPress 2 to find I\n");
+printf("\nPress 3 to find R\n");
+int input = get_user_input();
+
+    switch (input)
+    {
+    case 1:find_P_PIR();break;
+    case 2:find_I_PIR();break;
+    case 3:find_R_PIR();break;
+    case 4: printf("Exiting program...\n"); exit(0);
+
+     default: printf("Invalid selection. Exiting...\n"); exit(1);
+        
+
+    
+    }
 }
 
-void PVR(){
-    find_P_PVR();
-    find_V_PVR();
-    find_R_PVR();
-}
+void PVR(void){
+printf("\nPress 1 to find P\n");
+printf("\nPress 2 to find V\n");
+printf("\nPress 3 to find R\n");
+int input = get_user_input();
 
+    switch (input)
+    {
+    case 1:find_P_PVR();break;
+    case 2:find_V_PVI();break;
+    case 3:find_R_PVI();break;
+    case 4: printf("Exiting program...\n"); exit(0);
+
+     default: printf("Invalid selection. Exiting...\n"); exit(1);
+        
+
+    
+    }
+}
 
 //inside Power equation for PVI-----------------------------------------------------------
 
@@ -658,6 +696,105 @@ void find_R_PVR(void){
 
      printf("\n R = %f\n",R); //Prints value 
 }
+
+
+
+
+
+//// CAPACITANCE EQUATION FUNCTIONS
+
+void find_C_CQV(void){
+    char buf[100];
+   
+
+    double Q;
+    double V;
+    printf("\n Enter value for Q\n");
+   if (fgets(buf, sizeof buf, stdin)) {  //if user enter a number fgets stores the number into buf as long as the characters are not more than 99
+        Q  = strtod(buf, NULL); // here the string buf is converted int9 decimal and stored into the variable Vin
+        printf("Q= %f\n", Q); // here the value of Vin is printed 
+    }
+    // same method used as the previous if statement
+    printf("\n Enter value for V\n"); 
+     if (fgets(buf, sizeof buf, stdin)) {
+        V = strtod(buf, NULL);
+        printf("V = %f\n", V);
+    }
+    
+
+    double C = Q/V;// here a variable is created to store the value of the calculation of the values that where input previously
+
+    printf("\n C= %f\n",C); //Prints value
+}
+
+
+
+void find_Q_CQV(void){
+    char buf[100];
+   
+
+    double C;
+    double V;
+    printf("\n Enter value for C\n");
+   if (fgets(buf, sizeof buf, stdin)) {  //if user enter a number fgets stores the number into buf as long as the characters are not more than 99
+        C  = strtod(buf, NULL); // here the string buf is converted int9 decimal and stored into the variable Vin
+        printf("C = %f\n", C); // here the value of Vin is printed 
+    }
+    // same method used as the previous if statement
+    printf("\n Enter value for V\n"); 
+     if (fgets(buf, sizeof buf, stdin)) {
+        V = strtod(buf, NULL);
+        printf("V = %f\n", V);
+    }
+    
+
+    double Q = C*V;// here a variable is created to store the value of the calculation of the values that where input previously
+
+    printf("\n Q = %f\n",Q); //Prints value
+
+}
+
+void find_V_CQV(void){
+    char buf[100];
+   
+
+    double Q;
+    double C;
+    printf("\n Enter value for Q\n");
+   if (fgets(buf, sizeof buf, stdin)) {  //if user enter a number fgets stores the number into buf as long as the characters are not more than 99
+        Q  = strtod(buf, NULL); // here the string buf is converted int9 decimal and stored into the variable Vin
+        printf("Q= %f\n", Q); // here the value of Vin is printed 
+    }
+    // same method used as the previous if statement
+    printf("\n Enter value for C\n"); 
+     if (fgets(buf, sizeof buf, stdin)) {
+        C = strtod(buf, NULL);
+        printf("V = %f\n", C);
+    }
+    
+
+    double V = Q/C;// here a variable is created to store the value of the calculation of the values that where input previously
+
+    printf("\n V= %f\n",V); //Prints value
+}
+
+
+void select_variable_capacitance(int input) {
+    switch (input) {
+        case 1:find_C_CQV(); break;
+        case 2:find_Q_CQV(); break;
+        case 3:find_V_CQV(); break;
+        
+
+
+        case 4: printf("Exiting program...\n"); exit(0);
+        default: printf("Invalid selection. Exiting...\n"); exit(1);
+    }
+}
+
+
+
+
 
 
 

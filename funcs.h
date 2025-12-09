@@ -63,5 +63,5 @@ void find_V_CQV(void);
 void select_variable_capacitance(int input);
 
 //search engine
-void search_engine(void);
+void search_menu(void);
 #endif

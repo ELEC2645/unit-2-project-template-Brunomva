@@ -36,6 +36,8 @@ void select_menu_item(int input) {
 
 
         case 5: printf("Exiting program...\n"); exit(0);
+
+        case 6: search_menu(); break;
         default: printf("Invalid selection. Exiting...\n"); exit(1);
     }
 }
@@ -43,13 +45,18 @@ void select_menu_item(int input) {
 
 
 void print_main_menu(void) {
-    printf("\n----------- Main menu -----------\n");
+    printf("\n============================== \n");
+    printf("\n============================== \n");
+    printf("\n      >>> Main menu <<< \n");
     printf("|\t1. Potential Divider\t|\n");
     printf("|\t2. Ohms Law\t|\n");
     printf("|\t3. Power equations\t|\n");
     printf("|\t4. Capacitance\t\t|\n");
     printf("|\t5. Exit\t\t\t|\n");
-    printf("---------------------------------\n");
+    printf("|\t6. Search Formulas\t\t\t|\n");
+
+    printf("================================\n");
+    printf("================================\n");
 }
 
 void go_back_to_main(void) {

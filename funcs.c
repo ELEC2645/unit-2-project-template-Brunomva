@@ -45,18 +45,18 @@ void select_menu_item(int input) {
 
 
 void print_main_menu(void) {
-    printf("\n============================== \n");
-    printf("\n============================== \n");
-    printf("\n      >>> Main menu <<< \n");
+    printf("\n================================= \n");
+    printf("================================= ");
+    printf("\n         >>> Main menu <<< \n");
     printf("|\t1. Potential Divider\t|\n");
-    printf("|\t2. Ohms Law\t|\n");
+    printf("|\t2. Ohms Law\t\t|\n");
     printf("|\t3. Power equations\t|\n");
     printf("|\t4. Capacitance\t\t|\n");
     printf("|\t5. Exit\t\t\t|\n");
-    printf("|\t6. Search Formulas\t\t\t|\n");
+    printf("|\t6. Search Formulas\t|\n");
 
-    printf("================================\n");
-    printf("================================\n");
+    printf("=================================\n");
+    printf("=================================\n");
 }
 
 void go_back_to_main(void) {
@@ -116,7 +116,7 @@ void menu_item_4(void) {
 
 void print_menu_item_11(void){
     printf("\n----------- Potential divider -----------\n");
-    printf("\n##### PRESS #####\n");
+    printf("\n      ##### PRESS #####\n");
     printf("|\t1. to calculte Vout\t|\n");
     printf("|\t2. to calculte Vin\t|\n");
     printf("|\t3. to calculte R2\t\n");
@@ -129,7 +129,7 @@ void print_menu_item_11(void){
 
 void print_menu_item_22(void){
     printf("\n----------- Ohms law -----------\n");
-    printf("\n##### PRESS #####\n");
+    printf("\n      ##### PRESS #####\n");
     printf("|\t1. to calculte V\t|\n");
     printf("|\t2. to calculte R\t|\n");
     printf("|\t3. to calculte I\t\n");
@@ -141,7 +141,7 @@ void print_menu_item_22(void){
 
 void print_menu_item_33(void){
     printf("\n-----------Power equations -----------\n");
-    printf("\n##### PRESS #####\n");
+    printf("\n      ##### PRESS #####\n");
     printf("|\t1. to use P, V, I\t|\n");
     printf("|\t2. to use P, I, R\t|\n");
     printf("|\t3. to use P, V, R\t\n");
@@ -153,7 +153,7 @@ void print_menu_item_33(void){
 
 void print_menu_item_44(void){
     printf("\n----------- Capacitance -----------\n");
-    printf("\n##### PRESS #####\n");
+    printf("\n      ##### PRESS #####\n");
     printf("|\t1. to calculte C\t|\n");
     printf("|\t2. to calculte Q\t|\n");
     printf("|\t3. to calculte V\t\n");

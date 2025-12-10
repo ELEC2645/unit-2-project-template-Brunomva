@@ -37,4 +37,5 @@ Use the same method as previous labs to commit and push your code to your GitHub
 In your final journal post, please include a link to your GitHub repository containing your code  *and* a zip file of your code as an attachment.
 
 gcc search_engine.c -o main.out -lm
-gcc main.c funcs.c search_engine.c-o main.out -lm
+gcc main.c funcs.c search_engine.c -o main.out -lm
+gcc main.c -o main.out -lm

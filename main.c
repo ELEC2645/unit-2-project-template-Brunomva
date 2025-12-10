@@ -9,7 +9,7 @@
 
 int main(void) {
 
-// this is where your code will go
+// main menu contains all the functions from funcs.c inside it self
 main_menu();
 
 

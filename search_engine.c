@@ -96,9 +96,9 @@ void search_menu(void) {
     printf("\nResults for \"%s\":\n", keyword); // prints the keyword input by the user
 
 
-    // Go through the whole formula list and check if the keyword appears in the description
+    // Goes through the whole formula list and check if the keyword appears in the description
     for (int i = 0; i < FORMULA_COUNT; ++i) { // the amount of times the  loop repeats is equal to FORMULA_COUNT
-        if (strstr(formula_table[i].description, keyword)) { 
+        if (strstr(formula_table[i].description, keyword)) { //strstr is a function that finds a string inside a string
             matches[match_count] = i; // 
             printf("%d) %s\n", match_count + 1, formula_table[i].description);
             match_count++;
